@@ -15,13 +15,13 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Články</a>
+          <a class="nav-link" href="seznamClanku.php">Články</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Sezóny</a>
+          <a class="nav-link" href="">Sezóny</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Administrace</a>
+          <a class="nav-link" href="">Administrace</a>
         </li>
     
       </ul>
@@ -29,3 +29,13 @@
     </div>
   </div>
 </nav>
+
+
+
+
+
+
+
+
+
+
