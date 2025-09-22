@@ -17,6 +17,8 @@
                         </div>
                     </div>
                 <?php else: ?>
+                
+
                     <div class="col-3">
                        <div class="ratio ratio-1x1 position-relative overflow-hidden rounded">
                             <div class="position-absolute  w-100 h-100" style="background-size: cover;background-position:center;background-image: url('<?= base_url('obrazky/sigma/' . esc($article['photo'] ?? '')) ?>')"></div>
@@ -35,7 +37,7 @@
         <?php endif; ?>
     </div>
 </div>
-
+ // napsat aby byly aby malé byly 2x2
 
 
 
