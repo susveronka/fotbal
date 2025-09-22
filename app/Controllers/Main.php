@@ -46,9 +46,10 @@ class Main extends BaseController
 
     public function sezony() 
     {
-      $data['seasons'] = $this->season
+      $data['season'] = $this->season
         ->orderBy('start_year', 'DESC')
         ->findAll();
+
         return view('sezony', $data);
     }
 }
