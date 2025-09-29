@@ -9,7 +9,8 @@ $routes->get('/', 'Main::prvniStranka/');
 $routes->get('prvniStranka/', 'Main::prvniStranka/');
 $routes->get('seznamClanku', 'Main::seznamClanku/');
 $routes->get('clanek/(:num)', 'Main::clanek/$1');
-$routes->get('sezony', 'Main::sezony');
+$routes->get('sezony/', 'Main::sezony/');
+$routes->get('sezona/(:num)', 'Main::sezona/$1');
 
 $routes->get('administrace', 'Main::administrace');
 

@@ -5,18 +5,21 @@ namespace App\Controllers;
 use App\Models\Article;
 use App\Models\Team;
 use App\Models\Season;
+use App\Models\SeasonLeague;
 
 class Main extends BaseController
 {
     var $article;
     var $tym;
     var $season;
+    var $seasonLeague;
 
     public function __construct()
     {
         $this->article = new Article(); 
         $this->tym = new Team();
         $this->season = new Season();
+        $this->seasonLeague = new SeasonLeague();
     }
 
     public function prvniStranka() 
@@ -30,9 +33,12 @@ class Main extends BaseController
    
     } 
 
-    public function clanek() 
+    public function clanek($id) 
     {
-      return view('clanek');
+            $article['articles'] = $this->article
+        ->where('id', $id)
+        ->first();
+      echo view('clanek', $article);
     } 
 
     public function seznamClanku() 
@@ -47,10 +53,23 @@ class Main extends BaseController
     public function sezony() 
     {
       $data['season'] = $this->season
-        ->orderBy('start', 'DESC')
+        ->orderBy('start', 'ASC')
         ->findAll();
 
         return view('sezony', $data);
     }
+
+
+   /*  public function sezona($id) 
+    {
+       $data['season'] = $this->season
+        ->select('season.*, season_league.*')
+        ->join('season_league', 'season_league.season_id = seasons.id')
+        ->where('seasons.id', $id)
+        ->findAll();
+
+    return view('sezona', $data);
+  
+    } */
 }
 

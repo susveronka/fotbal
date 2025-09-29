@@ -4,9 +4,9 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Team extends Model
+class SeasonLeague extends Model
 {
-    protected $table            = 'team';
+    protected $table            = 'league_season';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

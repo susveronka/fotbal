@@ -12,8 +12,10 @@
                                 <a class="mt-auto fw-bold fs-2 text-white text-decoration-none" href="<?= site_url('clanek/' . $article['id']) ?>">
                                     <?= esc($article['title'] ?? 'Bez názvu') ?>
                                 </a>
+
                                 <div class="mt-3 fs-4 text-white"><?= date('j.n.Y', $article['date']) ?></div>
                             </div>
+                            
                         </div>
                     </div>
                 <?php else: ?>
@@ -26,8 +28,12 @@
                                 <a class="mt-auto fw-bold fs-5 text-white text-decoration-none" href="<?= site_url('clanek/' . $article['id']) ?>">
                                     <?= esc($article['title'] ?? 'Bez názvu') ?>
                                 </a>
+
+
                                 <div class="mt-3 fs-6 text-white"><?= date('j.n.Y', $article['date']) ?></div>
                             </div>
+
+
                         </div>
                     </div>
                 <?php endif; ?>
