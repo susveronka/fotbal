@@ -12,14 +12,14 @@ class Main extends BaseController
     var $article;
     var $tym;
     var $season;
-    var $seasonLeague;
+    var $leagueSeason;
 
     public function __construct()
     {
         $this->article = new Article(); 
         $this->tym = new Team();
         $this->season = new Season();
-        $this->seasonLeague = new SeasonLeague();
+        $this->leagueSeason = new SeasonLeague();
     }
 
     public function prvniStranka() 
@@ -60,16 +60,14 @@ class Main extends BaseController
     }
 
 
-   /*  public function sezona($id) 
+    public function sezona($id) 
     {
-       $data['season'] = $this->season
-        ->select('season.*, season_league.*')
-        ->join('season_league', 'season_league.season_id = seasons.id')
-        ->where('seasons.id', $id)
-        ->findAll();
-
-    return view('sezona', $data);
+       $season['league'] = $this->leagueSeason
+       ->where('id_season', $id)
+       ->join('league', 'league_season.id_league=league.id', 'inner')
+       ->findAll();
+       echo view('sezona', $season);
   
-    } */
+    } 
 }
 
