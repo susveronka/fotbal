@@ -12,8 +12,9 @@ $routes->get('clanek/(:num)', 'Main::clanek/$1');
 $routes->get('sezony/', 'Main::sezony/');
 $routes->get('sezona/(:num)', 'Main::sezona/$1');
 
-$routes->get('administrace', 'Main::administrace');
+$routes->get('formular/admin', 'Main::admin');
 
-$routes->post('formular/create', 'Administrace::create');
-$routes->put('formular/edit/(:num)', 'Administrace::edit/$1');
-$routes->delete('formular/delete/', 'Administrace::delete');
+$routes->get('formular/create', 'Formular::create');
+$routes->post('formular/update/(:num)', 'Formular::update/$1');
+$routes->get('formular/edit/(:num)', 'Formular::edit/$1');
+$routes->delete('formular/delete/', 'Formular::delete');

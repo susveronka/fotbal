@@ -4,22 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Article extends Model
+class League extends Model
 {
-    protected $table            = 'article';
+    protected $table            = 'league';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [
-    'title',
-    'photo',
-    'text',
-    'date',
-    'top',
-    'published'
-    ];
+    protected $allowedFields    = [];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

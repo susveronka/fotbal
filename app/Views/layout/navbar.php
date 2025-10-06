@@ -88,6 +88,17 @@
             grid-column: 1 / 2;
             min-height: 180px;
         }
+
+      .btn-primary {
+    background: linear-gradient(90deg, #6ec1e4 0%, #bfe9ff 100%);
+    color: #222;
+    border: none;
+    box-shadow: 0 2px 8px rgba(110,193,228,0.15);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+   
+}
+
     }
     </style>
 </head>
@@ -96,7 +107,7 @@
 
     
 
-<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
   <div class="container-fluid">
  
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,14 +120,20 @@
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
+
+        <a class="navbar-brand d-flex align-text-centre" href="<?= site_url('prvniStranka') ?>">
+      <img src="<?= base_url('logo.png') ?>" alt="Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
+    </a>
+
+
         <li class="nav-item">
-          <a class="nav-link" href="<?= site_url('seznamClanku/') ?>">Články</a>
+          <a class="nav-link d-inline-block align-text-top me-2" href="<?= site_url('seznamClanku/') ?>">Články</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= site_url('sezony/') ?>">Sezóny</a>
+          <a class="nav-link d-inline-block align-text-top me-2" href="<?= site_url('sezony/') ?>">Sezóny</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= site_url('administrace/') ?>">Administrace</a>
+          <a class="nav-link d-inline-block align-text-top me-2" href="<?= site_url('formular/admin/') ?>">Administrace</a>
         </li>
     
       </ul>

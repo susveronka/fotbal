@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Team;
 use App\Models\Season;
 use App\Models\SeasonLeague;
+use App\Models\League;
 
 class Main extends BaseController
 {
@@ -13,6 +14,7 @@ class Main extends BaseController
     var $tym;
     var $season;
     var $leagueSeason;
+    var $league;
 
     public function __construct()
     {
@@ -20,6 +22,13 @@ class Main extends BaseController
         $this->tym = new Team();
         $this->season = new Season();
         $this->leagueSeason = new SeasonLeague();
+        $this->league = new League();
+    }
+
+     public function admin()
+    {
+        $data['articles'] = $this->article->findAll();
+        return view('formular/admin', $data);
     }
 
     public function prvniStranka() 

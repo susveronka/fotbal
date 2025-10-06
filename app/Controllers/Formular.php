@@ -14,18 +14,14 @@ class Formular extends BaseController
         $this->article = new Article();
     }
 
-    public function admin()
+   
+
+    public function create()
     {
-        $data['articles'] = $this->article->findAll();
-        return view('formular/admin', $data);
+        echo view('formular/create');
     }
 
-    public function create_clanek()
-    {
-        echo view('formular/create_clanek');
-    }
-
-    public function store_clanek()
+    public function store()
     {
         $data = [
             'title' => $this->request->getPost('title'),
@@ -39,12 +35,12 @@ class Formular extends BaseController
         return redirect()->to(base_url('formular/admin'));
     }
 
-    public function edit_clanek($id)
+    public function edit($id)
     {
         $data['article'] = $this->article->find($id);
-        echo view('formular/edit_clanek', $data);
+        echo view('formular/edit', $data);
     }
-public function update_clanek($id)
+public function update($id)
     {
         $data = [
             'title' => $this->request->getPost('title'),
@@ -58,7 +54,7 @@ public function update_clanek($id)
         return redirect()->to(base_url('formular/admin'));
     }
 
-    public function delete_clanek($id)
+    public function delete($id)
     {
         $this->article->delete($id);
         return redirect()->to(base_url('formular/admin'));

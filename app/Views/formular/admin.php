@@ -1,5 +1,5 @@
-<?= $this->include('layout/layout') ?>
-<a href="<?= base_url('formular/create_clanek') ?>" class="btn btn-primary mb-3">Přidat nový článek</a>
+<?= $this->include('layout/navbar') ?>
+<div class="container-fluid">
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -11,11 +11,11 @@
     <tbody>
         <?php foreach ($articles as $article): ?>
         <tr>
-            <td><?= $article->id; ?></td>
-            <td><?= $article->title; ?></td>
+            <td><?= esc(is_array($article) ? $article['id'] : $article->id); ?></td>
+            <td><?= esc(is_array($article) ? $article['title'] : $article->title); ?></td>
             <td>
-                <a href="<?= base_url('formular/edit_clanek/'.$article->id) ?>" class="btn btn-warning">Upravit</a>
-                <form action="<?= base_url('formular/delete_clanek/'.$article->id) ?>" method="post" style="display:inline;">
+                <a href="<?= base_url('formular/edit/' . (is_array($article) ? $article['id'] : $article->id)) ?>" class="btn btn-warning">Upravit</a>
+                <form action="<?= base_url('formular/delete/' . (is_array($article) ? $article['id'] : $article->id)) ?>" method="post" style="display:inline;">
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btn btn-danger" onclick="return confirm('Opravdu chcete smazat tento článek?')">Smazat</button>
                 </form>
@@ -23,4 +23,8 @@
         </tr>
         <?php endforeach; ?>
     </tbody>
+    
 </table>
+
+    <a href="<?= base_url('formular/create') ?>" class="btn btn-primary mb-3">Přidat nový článek</a>
+</div>
