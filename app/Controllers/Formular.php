@@ -41,7 +41,7 @@ class Formular extends BaseController
         echo view('formular/edit', $data);
     }
 public function update($id)
-    {
+{
         $data = [
             'title' => $this->request->getPost('title'),
             'photo' => $this->request->getPost('photo'),
@@ -60,5 +60,29 @@ public function update($id)
         return redirect()->to(base_url('formular/admin'));
 
    
+}
+public function clanek()
+{
+    $image = $this->request->getFile('image');
+    $imageName = null;
+
+    if ($image && $image->isValid() && !$image->hasMoved()) {
+        $imageName = $image->getRandomName();
+        $image->move(WRITEPATH . 'uploads', $imageName);
+    }
+
+    $data = [
+        'title'     => $this->request->getPost('title'),
+        'text'      => $this->request->getPost('text'),
+        'image'     => $imageName,
+        'top'       => $this->request->getPost('top') ? 1 : 0,
+        'published' => $this->request->getPost('published') ? 1 : 0,
+    ];
+
+    // Uložení do databáze (příklad)
+    $model = new \App\Models\Article();
+    $model->insert($data);
+
+    return redirect()->to('/clanky');
 }
 }
