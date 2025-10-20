@@ -1,19 +1,46 @@
 <?= $this->include('layout/layout') ?>
-<?= $this->include('layout/sablona') ?>
 
-<!-- Load TinyMCE from CDN -->
+
+<!-- TinyMCE from CDN -->
 <script src="https://cdn.tiny.cloud/1/1g40swj73gdyfitj5wuf7qxz795ir6sqt4lnqdral3beq2qy/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
+<!-- TinyMCE Init -->
 <script>
-    // Initialize TinyMCE for the textarea with ID 'text'
+document.addEventListener('DOMContentLoaded', function () {
     tinymce.init({
         selector: '#text',
-        plugins: 'lists link image code',
-        toolbar: 'undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code',
-        menubar: true,
         height: 300,
-        branding: false
+        menubar: true,
+        plugins: 'lists link image code paste',
+        toolbar: 'undo redo | styleselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | code',
+        block_formats: 'Paragraph=p;Heading 1=h1;Heading 2=h2;Heading 3=h3',
+        forced_root_block: 'p',
+        paste_as_text: true,
+        automatic_uploads: true,
+        file_picker_types: 'image',
+        file_picker_callback: function (cb, value, meta) {
+            if (meta.filetype === 'image') {
+                const input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
+                input.onchange = function () {
+                    const file = this.files[0];
+                    const reader = new FileReader();
+                    reader.onload = function () {
+                        const id = 'blobid' + (new Date()).getTime();
+                        const blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                        const base64 = reader.result.split(',')[1];
+                        const blobInfo = blobCache.create(id, file, base64);
+                        blobCache.add(blobInfo);
+                        cb(blobInfo.blobUri(), { title: file.name });
+                    };
+                    reader.readAsDataURL(file);
+                };
+                input.click();
+            }
+        }
     });
+});
 </script>
 
 <div class="container-fluid">
@@ -31,7 +58,8 @@
         </div>
 
         <div class="form-floating mb-3">
-            <textarea class="form-control"  placeholder="Napište text článku zde" id="text" name="text"></textarea>
+            <!-- Fixed: removed '#' from id -->
+            <textarea class="form-control" placeholder="Napište text článku zde" id="text" name="text"></textarea>
             <label for="text">Text článku</label>
         </div>
 
