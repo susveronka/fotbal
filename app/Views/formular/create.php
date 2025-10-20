@@ -6,14 +6,18 @@
     
     <script>
         tinymce.init({
-            selector: '#text', // target your textarea
-            plugins: 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount',
-            toolbar: 'undo redo | formatselect | bold italic backcolor | \
-                      alignleft aligncenter alignright alignjustify | \
-                      bullist numlist outdent indent | removeformat | help',
+            selector: '#text', 
+            plugins: 'lists link paste',
+            toolbar: 'undo redo | formatselect | bold italic underline | \
+                      alignleft aligncenter alignright | \
+                      bullist numlist | removeformat | link',
             height: 300,
             menubar: false,
-            language: 'cs', // Optional: If you want Czech language support, make sure the language file is loaded
+            language: 'cs',
+            forced_root_block: 'p',        // vždy obalí odstavce do <p>
+            block_formats: 'Paragraph=p;Heading 1=h1;Heading 2=h2',
+            paste_as_text: true,          // vložení jako prostý text
+            branding: false
         });
     </script>
 </head>

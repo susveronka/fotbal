@@ -1,10 +1,11 @@
+
 <?= $this->include('layout/layout') ?>
 <head>
     <script src="/node_modules/tinymce/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
 </head>
 <div class="container-fluid">
 <h1>Upravit článek</h1>
-<form action="<?= base_url('formular/update/' . (is_array($article) ? $article['id'] : $article->id)) ?>" method="post">
+<form action="<?= base_url('formular/update/' . (is_array($article) ? $article['id'] : $article->id)) ?>" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="title">Název</label>
         <input type="text" name="title" id="title" class="form-control" value="<?= is_array($article) ? $article['title'] : $article->title; ?>" required>
@@ -36,4 +37,20 @@
     </div>
     <button type="submit" class="btn btn-primary mt-3">Uložit</button>
 </form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    tinymce.init({
+        selector: '#text',
+        height: 300,
+        menubar: false,
+        plugins: 'lists link paste',
+        toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | removeformat | link',
+        block_formats: 'Paragraph=p;Heading 1=h1;Heading 2=h2;Heading 3=h3',
+        forced_root_block: 'p',
+        paste_as_text: true
+    });
+});
+</script>
+
 </div>
