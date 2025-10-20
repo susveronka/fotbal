@@ -54,7 +54,7 @@ class Main extends BaseController
     {
       $data['articles'] = $this->article
         ->where('top', 1)
-        ->orderBy('id', 'DESC')
+        ->orderBy('date', 'DESC')
         ->findAll();
         return view('seznamClanku', $data);
     }

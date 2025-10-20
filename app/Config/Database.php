@@ -28,7 +28,7 @@ class Database extends Config
         'DSN'          => '',
         'hostname'     => 'localhost',
         'username'     => 'root',
-        'password'     => 'ServBay.dev',
+        'password'     => '',
         'database'     => 'sustkova',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',

@@ -1,7 +1,7 @@
 
 <?= $this->include('layout/layout') ?>
 <head>
-    <script src="/node_modules/tinymce/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
+      <script src="https://cdn.tiny.cloud/1/1g40swj73gdyfitj5wuf7qxz795ir6sqt4lnqdral3beq2qy/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <div class="container-fluid">
 <h1>Upravit článek</h1>

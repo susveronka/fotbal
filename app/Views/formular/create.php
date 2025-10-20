@@ -1,26 +1,20 @@
 <?= $this->include('layout/layout') ?>
+<?= $this->include('layout/sablona') ?>
 
-<head>
-    <!-- TinyMCE from node_modules -->
-    <script src="/node_modules/tinymce/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
-    
-    <script>
-        tinymce.init({
-            selector: '#text', 
-            plugins: 'lists link paste',
-            toolbar: 'undo redo | formatselect | bold italic underline | \
-                      alignleft aligncenter alignright | \
-                      bullist numlist | removeformat | link',
-            height: 300,
-            menubar: false,
-            language: 'cs',
-            forced_root_block: 'p',        // vždy obalí odstavce do <p>
-            block_formats: 'Paragraph=p;Heading 1=h1;Heading 2=h2',
-            paste_as_text: true,          // vložení jako prostý text
-            branding: false
-        });
-    </script>
-</head>
+<!-- Load TinyMCE from CDN -->
+<script src="https://cdn.tiny.cloud/1/1g40swj73gdyfitj5wuf7qxz795ir6sqt4lnqdral3beq2qy/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+    // Initialize TinyMCE for the textarea with ID 'text'
+    tinymce.init({
+        selector: '#text',
+        plugins: 'lists link image code',
+        toolbar: 'undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code',
+        menubar: true,
+        height: 300,
+        branding: false
+    });
+</script>
 
 <div class="container-fluid">
     <h1>Přidat nový článek</h1>
@@ -37,7 +31,7 @@
         </div>
 
         <div class="form-floating mb-3">
-            <textarea class="form-control" placeholder="Napište text článku zde" id="text" name="text"></textarea>
+            <textarea class="form-control"  placeholder="Napište text článku zde" id="text" name="text"></textarea>
             <label for="text">Text článku</label>
         </div>
 
